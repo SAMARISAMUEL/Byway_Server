@@ -39,7 +39,7 @@ userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
 
   // encrypt the password
-  this.password = await bcrypt.hash(this.password, 10);
+  this.password = await bcrypt.hash(this.password, 10); // Instead of 10, you might want to use 12 or 14 for stronger security, but keep in mind that higher rounds take more processing time.
   next();
 });
 // Method to compare passwords
